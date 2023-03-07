@@ -1,4 +1,4 @@
-package com.raven.component;
+ package com.raven.component;
 
 import com.raven.swing.ScrollBar;
 import java.awt.Color;
@@ -13,8 +13,8 @@ public class Chat_Body extends javax.swing.JPanel {
         addItemRight("hello\nHi");
         addItemLeft("Simpletext started as a passion project because I couldn’t find what I was looking for. Most apps were trying to do too much and ended up bloated with features I don’t need. So I built Simpletext based on a simple premise — what if there’s an app that refuses to do more, choosing instead to do just one thing, and do it well? For Simpletext, that one thing is writing.");
         addItemLeft("hello\nerererew\newewe");
-        addItemRight("hello\nerererew\newewe");
-        addItemLeft("hello\nerererew\newewe");
+        addItemRight("hello\nHi");
+        addItemRight("hello");
     }
 
     private void init() {
@@ -50,7 +50,6 @@ public class Chat_Body extends javax.swing.JPanel {
 
         sp.setBorder(null);
         sp.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-        sp.setAutoscrolls(true);
 
         body.setBackground(new java.awt.Color(255, 255, 255));
 
