@@ -38,7 +38,7 @@ public class Item_People extends javax.swing.JPanel {
         lb.setFont(new java.awt.Font("Berlin Sans FB", 0, 14)); // NOI18N
         lb.setText("Name");
 
-        imageAvatar1.setBorderColor(new java.awt.Color(30, 30, 30));
+        imageAvatar1.setBorderColor(new java.awt.Color(153, 153, 153));
         imageAvatar1.setBorderSize(1);
         imageAvatar1.setImage(new javax.swing.ImageIcon(getClass().getResource("/com/raven/icon/profile.png"))); // NOI18N
 
@@ -51,7 +51,7 @@ public class Item_People extends javax.swing.JPanel {
                 .addComponent(imageAvatar1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(lb, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addContainerGap(39, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
