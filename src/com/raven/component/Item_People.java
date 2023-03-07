@@ -1,12 +1,31 @@
 package com.raven.component;
 
+import java.awt.Color;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+
 public class Item_People extends javax.swing.JPanel {
 
     public Item_People(String name) {
         initComponents();
         lb.setText(name);
+        init();
     }
 
+     private void init() {
+        addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent me) {
+                setBackground(new Color(230, 230, 230));
+            }
+
+            @Override
+            public void mouseExited(MouseEvent me) {
+                setBackground(new Color(242, 242, 242));
+            }
+        });
+    }
+     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
