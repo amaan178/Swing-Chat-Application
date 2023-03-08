@@ -30,9 +30,9 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="1" attributes="0">
               <Component id="chat_Title2" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="32767" attributes="0"/>
+              <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
               <Component id="chat_Body1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
               <Component id="chat_Bottom1" min="-2" max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -55,9 +55,6 @@
       </Layout>
     </Container>
     <Component class="com.raven.component.Chat_Body" name="chat_Body1">
-      <Properties>
-        <Property name="autoscrolls" type="boolean" value="true"/>
-      </Properties>
     </Component>
     <Component class="com.raven.component.Chat_Title" name="chat_Title2">
     </Component>
