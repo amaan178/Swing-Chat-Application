@@ -29,6 +29,10 @@ public class Chat_Right extends javax.swing.JLayeredPane {
     public void setTime() {
         txt.setTime("10:30 PM");    //  Testing
     }
+    
+    public void setFile(String fileName, String fileSize) {
+        txt.setFile(fileName, fileSize);
+    }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
