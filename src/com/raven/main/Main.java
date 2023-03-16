@@ -14,6 +14,7 @@ import java.awt.Dimension;
 import java.awt.Toolkit;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
+import com.raven.service.Service;
 import javax.swing.JFrame;
 
 /**
@@ -42,6 +43,7 @@ public class Main extends javax.swing.JFrame {
         vIew_Image.setVisible(false);
         home.setVisible(false);
         initEvent();
+        Service.getInstance().startServer();
     }
 
     private void initEvent() {
