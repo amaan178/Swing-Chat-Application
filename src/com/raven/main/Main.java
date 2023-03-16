@@ -5,7 +5,9 @@
  */
 package com.raven.main;
 
+import com.formdev.flatlaf.intellijthemes.FlatArcIJTheme;
 import com.raven.event.EventImageView;
+import com.raven.event.EventMain;
 import com.raven.event.PublicEvent;
 import com.raven.swing.ComponentResizer;
 import java.awt.Dimension;
@@ -35,16 +37,29 @@ public class Main extends javax.swing.JFrame {
         com.setMinimumSize(new Dimension(900, 500));
         com.setMaximumSize(Toolkit.getDefaultToolkit().getScreenSize());
         com.setSnapSize(new Dimension(10, 10));
-        vIew_Image1.setVisible(false);
-        home1.setVisible(true);
+        login.setVisible(true);
+        loading.setVisible(false);
+        vIew_Image.setVisible(false);
+        home.setVisible(false);
         initEvent();
     }
 
     private void initEvent() {
+        PublicEvent.getInstance().addEventMain(new EventMain() {
+            @Override
+            public void showLoading(boolean show) {
+                loading.setVisible(show);
+            }
+
+            @Override
+            public void initChat() {
+                home.setVisible(true);
+            }
+        });
         PublicEvent.getInstance().addEventImageView(new EventImageView() {
             @Override
             public void viewImage(Icon image) {
-                vIew_Image1.viewImage(image);
+                vIew_Image.viewImage(image);
             }
 
             @Override
@@ -70,8 +85,10 @@ public class Main extends javax.swing.JFrame {
         cmdMinimize = new javax.swing.JButton();
         cmdClose = new javax.swing.JButton();
         body = new javax.swing.JLayeredPane();
-        vIew_Image1 = new com.raven.form.VIew_Image();
-        home1 = new com.raven.form.Home();
+        loading = new com.raven.form.Loading();
+        login = new com.raven.form.Login();
+        vIew_Image = new com.raven.form.VIew_Image();
+        home = new com.raven.form.Home();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -134,8 +151,10 @@ public class Main extends javax.swing.JFrame {
         );
 
         body.setLayout(new java.awt.CardLayout());
-        body.add(vIew_Image1, "card3");
-        body.add(home1, "card2");
+        body.add(loading, "card4");
+        body.add(login, "card5");
+        body.add(vIew_Image, "card3");
+        body.add(home, "card2");
 
         javax.swing.GroupLayout backgroundLayout = new javax.swing.GroupLayout(background);
         background.setLayout(backgroundLayout);
@@ -247,8 +266,10 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JPanel border;
     private javax.swing.JButton cmdClose;
     private javax.swing.JButton cmdMinimize;
-    private com.raven.form.Home home1;
+    private com.raven.form.Home home;
+    private com.raven.form.Loading loading;
+    private com.raven.form.Login login;
     private javax.swing.JPanel title;
-    private com.raven.form.VIew_Image vIew_Image1;
+    private com.raven.form.VIew_Image vIew_Image;
     // End of variables declaration//GEN-END:variables
 }
