@@ -33,11 +33,12 @@ public class Menu_Left_1 extends javax.swing.JPanel {
                 }
             }
 
-            @Override
+           @Override
             public void userConnect(int userID) {
                 for (Model_User_Account u : userAccount) {
                     if (u.getUserID() == userID) {
                         u.setStatus(true);
+                        PublicEvent.getInstance().getEventMain().updateUser(u);
                         break;
                     }
                 }
@@ -57,6 +58,7 @@ public class Menu_Left_1 extends javax.swing.JPanel {
                 for (Model_User_Account u : userAccount) {
                     if (u.getUserID() == userID) {
                         u.setStatus(false);
+                        PublicEvent.getInstance().getEventMain().updateUser(u);
                         break;
                     }
                 }
