@@ -36,9 +36,26 @@ public class Service {
                     //  list user
                     List<Model_User_Account> users = new ArrayList<>();
                     for (Object o : os) {
-                        users.add(new Model_User_Account(o));
+                        Model_User_Account u = new Model_User_Account(o);
+                        if (u.getUserID() != user.getUserID()) {
+                            users.add(u);
+                        }
                     }
                     PublicEvent.getInstance().getEventMenuLeft().newUser(users);
+                }
+            });
+            client.on("user_status", new Emitter.Listener() {
+                @Override
+                public void call(Object... os) {
+                    int userID = (Integer) os[0];
+                    boolean status = (Boolean) os[1];
+                    if (status) {
+                        //  connect
+                        PublicEvent.getInstance().getEventMenuLeft().userConnect(userID);
+                    } else {
+                        //  disconnect
+                        PublicEvent.getInstance().getEventMenuLeft().userDisconnect(userID);
+                    }
                 }
             });
             client.open();
