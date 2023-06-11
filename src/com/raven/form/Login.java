@@ -4,7 +4,9 @@ import com.raven.event.EventLogin;
 import com.raven.event.EventMessage;
 import com.raven.event.PublicEvent;
 import com.raven.model.Model_Message;
+import com.raven.model.Model_Login;
 import com.raven.model.Model_Register;
+import com.raven.model.Model_User_Account;
 import com.raven.service.Service;
 import io.socket.client.Ack;
 
@@ -18,18 +20,30 @@ public class Login extends javax.swing.JPanel {
     private void init() {
         PublicEvent.getInstance().addEventLogin(new EventLogin() {
             @Override
-            public void login() {
+            public void login(Model_Login data) {
                 new Thread(new Runnable() {
                     @Override
                     public void run() {
                         PublicEvent.getInstance().getEventMain().showLoading(true);
-                        try {
-                            Thread.sleep(3000); //  for test
-                        } catch (InterruptedException e) {
-                        }
-                        PublicEvent.getInstance().getEventMain().showLoading(false);
-                        PublicEvent.getInstance().getEventMain().initChat();
-                        setVisible(false);
+                        Service.getInstance().getClient().emit("login", data.toJsonObject(), new Ack() {
+                            @Override
+                            public void call(Object... os) {
+                                if (os.length > 0) {
+                                    boolean action = (Boolean) os[0];
+                                    if (action) {
+                                        Service.getInstance().setUser(new Model_User_Account(os[1]));
+                                        PublicEvent.getInstance().getEventMain().showLoading(false);
+                                        PublicEvent.getInstance().getEventMain().initChat();
+                                    } else {
+                                        //  password wrong
+                                        PublicEvent.getInstance().getEventMain().showLoading(false);
+                                    }
+                                } else {
+                                    PublicEvent.getInstance().getEventMain().showLoading(false);
+                                }
+                            }
+                        });
+
                     }
                 }).start();
             }
@@ -41,6 +55,10 @@ public class Login extends javax.swing.JPanel {
                     public void call(Object... os) {
                         if (os.length > 0) {
                             Model_Message ms = new Model_Message((boolean) os[0], os[1].toString());
+                            if (ms.isAction()) {
+                                Model_User_Account user = new Model_User_Account(os[2]);
+                                Service.getInstance().setUser(user);
+                            }
                             message.callMessage(ms);
                             //  call message back when done register
                         }
